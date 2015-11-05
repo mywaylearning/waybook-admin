@@ -1,7 +1,4 @@
-'use strict';
-
 function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
-
   $locationProvider.html5Mode(true);
 
   $stateProvider
@@ -13,7 +10,6 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
   });
 
   $urlRouterProvider.otherwise('/');
-
 }
 
 export default OnConfig;

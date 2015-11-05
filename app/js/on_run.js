@@ -1,7 +1,4 @@
-'use strict';
-
 function OnRun($rootScope, AppSettings) {
-
   // change page title based on state
   $rootScope.$on('$stateChangeSuccess', (event, toState) => {
     $rootScope.pageTitle = '';
@@ -13,7 +10,6 @@ function OnRun($rootScope, AppSettings) {
 
     $rootScope.pageTitle += AppSettings.appTitle;
   });
-
 }
 
 export default OnRun;

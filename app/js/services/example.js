@@ -1,7 +1,4 @@
-'use strict';
-
 function ExampleService($http) {
-
   const service = {};
 
   service.get = function() {
@@ -15,7 +12,6 @@ function ExampleService($http) {
   };
 
   return service;
-
 }
 
 export default {
