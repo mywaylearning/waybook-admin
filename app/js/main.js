@@ -6,16 +6,21 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-resource';
 import 'angular-messages';
+import 'restangular';
 import './templates';
 import './filters';
 import './controllers';
 import './services';
 import './directives';
 
+window._ = require('lodash');
+
 // create and bootstrap application
 const requires = [
   'ui.router',
+  'ngMessages',
   'ngResource',
+  'restangular',
   'templates',
   'app.filters',
   'app.controllers',

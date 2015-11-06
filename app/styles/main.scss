@@ -17,3 +17,12 @@ table .btn-icon {
   font-size: 12px;
   margin-right: -3px;
 }
+
+.navbar-text {
+  padding-top: .425rem;
+  padding-bottom: .425rem;
+}
+
+.nav-link-logout {
+  color: darken($brand-primary, 20%);
+}

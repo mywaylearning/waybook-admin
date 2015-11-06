@@ -6,6 +6,9 @@
         <a class="nav-link" ui-sref="dashboard.users">Users</a>
       </li>
     </ul>
+    <div class="nav navbar-text pull-right">
+      Welcome <strong> {{ loggedUser.firstName }}</strong> <a href="" class="nav-link-logout" ng-click="logout()">(logout)</a>
+    </div>
   </div>
 </nav>
 <div class="container dashboard-container">
