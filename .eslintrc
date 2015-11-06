@@ -1,5 +1,6 @@
 {
   "extends": "airbnb/base",
+  "plugins": ["angular"],
   "env": {
     "browser": true,
     "node": true,
@@ -10,6 +11,9 @@
     "modules": true
   },
   "rules": {
+    "angular/log": 0,
+    "angular/module-setter": 0,
+
     "quotes": [2, "single", "avoid-escape"],
     "comma-dangle": [2, "never"],
     "indent": [2, 2],

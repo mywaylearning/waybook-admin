@@ -1,0 +1,14 @@
+<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" ui-sref="dashboard.home">{{ appTitle }}</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" ui-sref="dashboard.users">Users</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container dashboard-container">
+  <h1 class="display-1">{{ stateTitle }}</h1>
+  <div ui-view></div>
+</div>

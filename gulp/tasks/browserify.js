@@ -42,7 +42,8 @@ function buildScript(file) {
     { 'name':debowerify, 'options': {}},
     { 'name':ngAnnotate, 'options': {}},
     { 'name':'brfs', 'options': {}},
-    { 'name':'bulkify', 'options': {}}
+    { 'name':'bulkify', 'options': {}},
+    { 'name':'localenvify', 'options': {}}
   ];
 
   transforms.forEach(function(transform) {

@@ -1,7 +1,11 @@
+/* eslint angular/window-service: 0, angular/di: 0 */
+
 import angular from 'angular';
 
 // angular modules
 import 'angular-ui-router';
+import 'angular-resource';
+import 'angular-messages';
 import './templates';
 import './filters';
 import './controllers';
@@ -11,6 +15,7 @@ import './directives';
 // create and bootstrap application
 const requires = [
   'ui.router',
+  'ngResource',
   'templates',
   'app.filters',
   'app.controllers',

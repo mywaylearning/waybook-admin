@@ -1,6 +1,6 @@
 const AppSettings = {
-  appTitle: 'Example Application',
-  apiUrl: '/api/v1'
+  appTitle: 'Waybook',
+  apiUrl: process.env.API_URL
 };
 
 export default AppSettings;

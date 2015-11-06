@@ -30,6 +30,11 @@ export default {
     dest: 'build/fonts'
   },
 
+  data: {
+    src: ['app/data/**/*'],
+    dest: 'build/data'
+  },
+
   views: {
     index: 'app/index.html',
     src: 'app/views/**/*.html',
