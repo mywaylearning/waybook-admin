@@ -1,4 +1,5 @@
 function EditUserCtrl(user) {
+  'ngInject';
   // ViewModel
   const vm = this;
 

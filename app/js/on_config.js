@@ -1,6 +1,7 @@
 function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, RestangularProvider, AppSettings) {
+  'ngInject';
   // Routes and states config
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 
   $stateProvider
   .state('public', {

@@ -1,4 +1,5 @@
 function UsersCtrl(collection) {
+  'ngInject';
   // ViewModel
   const vm = this;
 

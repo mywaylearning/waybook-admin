@@ -1,4 +1,5 @@
 function DashboardCtrl($scope, AppService, UserService) {
+  'ngInject';
   AppService.setLoggedUser();
 
   $scope.logout = function() {

@@ -1,4 +1,5 @@
 function AppCtrl($scope, AppService) {
+  'ngInject';
   AppService.init($scope);
 }
 

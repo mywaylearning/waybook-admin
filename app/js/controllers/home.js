@@ -1,4 +1,5 @@
 function HomeCtrl() {
+  'ngInject';
   // ViewModel
   const vm = this;
 

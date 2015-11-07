@@ -1,19 +1,14 @@
 function GrantService($q) {
+  'ngInject';
   const service = {};
   const roles = [];
-
-  function parseStateParam(states) {
-    return angular.isArray(states) ? states : [states];
-  }
 
   function authorize(whichRoles, states, resolveIfMatch, stateParams) {
     const matches = [];
     const _whichRoles = !angular.isArray(whichRoles) ? [whichRoles] : whichRoles;
+    const _states = !angular.isArray(states) ? [states] : states;
     let stateTo;
     let deferred;
-    let _states;
-
-    _states = parseStateParam(states);
 
     // find the roles we are trying to authorize
     roles.forEach(function(role, index) {

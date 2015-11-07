@@ -1,4 +1,5 @@
 function UtilsService($q) {
+  'ngInject';
   const service = {};
 
   service.promisify = function(value) {

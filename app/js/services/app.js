@@ -1,4 +1,5 @@
 function AppService(UserService) {
+  'ngInject';
   const service = {};
   let scope;
 

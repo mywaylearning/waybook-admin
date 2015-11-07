@@ -1,4 +1,5 @@
 function RoleService($q, $state, GrantService, UtilsService, AppSettings) {
+  'ngInject';
   function onRolePass(role, resolveIfMatch, deferred, resolvedValue) {
     if (resolveIfMatch) {
       deferred.resolve(resolvedValue);

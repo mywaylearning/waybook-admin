@@ -1,4 +1,5 @@
 function ApiService(Restangular, AuthService, AppSettings) {
+  'ngInject';
   function restangularConfig(RestangularConfigurer) {
     /**
      *  Set api base url

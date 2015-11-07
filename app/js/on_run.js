@@ -1,5 +1,6 @@
 /* eslint angular/on-watch: 0, new-cap: 0, no-new: 0 */
 function OnRun($rootScope, $state, $timeout, AppSettings, Restangular, AuthService, UserService, RoleService) {
+  'ngInject';
   // change page title based on state
   $rootScope.$on('$stateChangeSuccess', (event, toState) => {
     $rootScope.pageTitle = '';

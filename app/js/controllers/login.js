@@ -1,4 +1,5 @@
 function LoginCtrl($scope, AuthService, UserService, $state) {
+  'ngInject';
   // ViewModel
   const vm = this;
 

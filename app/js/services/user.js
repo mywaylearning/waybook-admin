@@ -1,4 +1,5 @@
 function UserService($window, $state, ApiService, AuthService) {
+  'ngInject';
   const Users = ApiService.all('users');
   const User = ApiService.one('user');
   const service = {};
@@ -29,7 +30,7 @@ function UserService($window, $state, ApiService, AuthService) {
   // Return a specific user by id
   service.userById = function(id) {
     return Users.one(id);
-  }
+  };
 
   /**
    * Helper method to retreive logged in user's information.

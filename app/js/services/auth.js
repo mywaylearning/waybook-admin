@@ -1,6 +1,7 @@
 import store from 'store';
 
 function AuthService($q, Restangular, AppSettings) {
+  'ngInject';
   const service = {};
   const Oauth = Restangular.all('login');
   const headers = {

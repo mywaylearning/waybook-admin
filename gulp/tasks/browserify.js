@@ -10,12 +10,9 @@ import buffer       from 'vinyl-buffer';
 import streamify    from 'gulp-streamify';
 import watchify     from 'watchify';
 import browserify   from 'browserify';
-import babelify     from 'babelify';
 import uglify       from 'gulp-uglify';
 import handleErrors from '../util/handleErrors';
 import browserSync  from 'browser-sync';
-import debowerify   from 'debowerify';
-import ngAnnotate   from 'browserify-ngannotate';
 
 // Based on: http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
 function buildScript(file) {
@@ -38,13 +35,17 @@ function buildScript(file) {
   }
 
   const transforms = [
-    { 'name':babelify, 'options': {}},
-    { 'name':debowerify, 'options': {}},
-    { 'name':ngAnnotate, 'options': {}},
-    { 'name':'brfs', 'options': {}},
-    { 'name':'bulkify', 'options': {}},
-    { 'name':'localenvify', 'options': {}}
+    { 'name':'babelify', 'options': {} },
+    { 'name':'debowerify', 'options': {} },
+    { 'name':'brfs', 'options': {} },
+    { 'name':'bulkify', 'options': {} },
+    { 'name':'browserify-ngannotate', 'options': {} },
+    { 'name':'localenvify', 'options': {} }
   ];
+
+  // if (global.isProd) {
+  //   transforms.push({ 'name':'uglifyify', 'options': {} });
+  // }
 
   transforms.forEach(function(transform) {
     bundler.transform(transform.name, transform.options);
