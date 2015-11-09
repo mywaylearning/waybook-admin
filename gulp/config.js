@@ -2,8 +2,11 @@
 
 export default {
 
-  browserPort: 3000,
-  UIPort: 3001,
+  browserSync: {
+    appName: 'MyApp',
+    browserPort: 3000,
+    UIPort: 3001
+  },
 
   sourceDir: './app/',
   buildDir: './build/',
@@ -12,7 +15,9 @@ export default {
     src: 'app/styles/**/*.scss',
     dest: 'build/css',
     prodSourcemap: false,
-    sassIncludePaths: []
+    sassIncludePaths: [
+      './node_modules/'
+    ]
   },
 
   scripts: {

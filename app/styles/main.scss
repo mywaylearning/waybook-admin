@@ -1,28 +1,91 @@
-@import './bootstrap/scss/bootstrap';
+@import 'angular-material/angular-material';
+@import 'angular-material-data-table/dist/md-data-table';
 
 @import 'vars';
 @import 'typography';
 
 
-body {
-  padding-top: 60px;
+.logged-user {
+  font-size: 14px;
 }
 
-.dashboard-container {
-  margin-top: 20px;
+.dashboard-sidenav {
+  background-color: $sidebar-bg;
 }
 
-table .btn-icon {
-  padding: 1px 6px 1px;
-  font-size: 12px;
-  margin-right: -3px;
+.dashboard-toolbar {
+  background: #f6f6f6 !important;
+  color: #202020 !important;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+
+  .md-button md-icon {
+    color: #666 !important;
+  }
 }
 
-.navbar-text {
-  padding-top: .425rem;
-  padding-bottom: .425rem;
+.dashboard-content {
+  margin: 16px;
+  box-sizing: border-box;
 }
 
-.nav-link-logout {
-  color: darken($brand-primary, 20%);
+.api-error-message {
+  margin-bottom: 10px;
+  color: red;
+}
+
+.smooth-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .md-container {
+    transition: height 0.2s ease-in-out;
+    height: 0px;
+  }
+
+  &.show {
+    .md-container {
+      height: 3px;
+    }
+  }
+}
+
+md-data-table-toolbar > form {
+  margin-left: 16px;
+}
+
+md-data-table-toolbar > form > input {
+  width: 100%;
+  margin: 0;
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+md-data-table-toolbar > form > input:focus {
+  outline: none;
+}
+
+md-data-table-toolbar.alternate {
+  color: #1e88e5;
+  background-color: #e3f2fd;
+}
+
+.menu-list {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.menu-link {
+  display: block;
+  padding: 18px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: $sidebar-bg;
+  transition: background-color 0.1s ease-in-out;
+
+  &:hover, &.active {
+    background-color: darken($sidebar-bg, 20%);
+  }
 }

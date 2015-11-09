@@ -23,13 +23,13 @@ function UserService($window, $state, ApiService, AuthService) {
   }
 
   // Return collection of users
-  service.collection = function() {
-    return Users.getList();
+  service.collection = function(query) {
+    return Users.getList(query);
   };
 
   // Return a specific user by id
   service.userById = function(id) {
-    return Users.one(id);
+    return ApiService.one('users', id).get();
   };
 
   /**

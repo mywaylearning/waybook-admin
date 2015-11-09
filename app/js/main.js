@@ -6,6 +6,8 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-messages';
 import 'restangular';
+import 'angular-material-data-table';
+import 'angular-material';
 import './templates';
 import './filters';
 import './controllers';
@@ -16,8 +18,9 @@ window._ = require('lodash');
 
 // Import angular config and run
 import constants from './constants';
-import config from './on_config';
-import run from './on_run';
+import config from './config';
+import routes from './routes.config';
+import run from './run';
 
 
 // create and bootstrap application
@@ -25,6 +28,8 @@ const requires = [
   'ui.router',
   'ngMessages',
   'restangular',
+  'md.data.table',
+  'ngMaterial',
   'templates',
   'app.filters',
   'app.controllers',
@@ -39,6 +44,8 @@ angular.module('app').constant('AppSettings', constants);
 
 angular.module('app').config(config);
 
+angular.module('app').config(routes);
+
 angular.module('app').run(run);
 
-angular.bootstrap(document, ['app']);
+angular.bootstrap(document, ['app'], { strictDi: true });

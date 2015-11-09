@@ -1,0 +1,44 @@
+<md-card>
+  <md-card-content>
+    <form name="editUserForm" novalidate>
+      <div layout="row" layout-sm="column">
+        <md-input-container flex>
+          <label>First name</label>
+          <input type="text" ng-model="editUser.user.firstName" name="firstName" required />
+          <div ng-messages="editUserForm.firstName.$dirty && editUserForm.firstName.$error" role="alert">
+            <div ng-messages-include="errors.html"></div>
+          </div>
+        </md-input-container>
+
+        <md-input-container flex>
+          <label>Last name</label>
+          <input type="text" class="form-control" ng-model="editUser.user.lastName" name="lastName" required />
+          <div ng-messages="editUserForm.lastName.$dirty && editUserForm.lastName.$error" role="alert" class="text-danger">
+            <div ng-messages-include="errors.html"></div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-sm="column">
+        <md-input-container flex>
+          <label>E-mail</label>
+          <input type="email" class="form-control" ng-model="editUser.user.email" name="email" required />
+          <div ng-messages="editUserForm.email.$dirty && editUserForm.email.$error" role="alert" class="text-danger">
+            <div ng-messages-include="errors.html"></div>
+          </div>
+        </md-input-container>
+
+        <md-input-container flex>
+          <label>Password</label>
+          <input type="password" class="form-control" ng-model="editUser.user.password" name="password" />
+          <div ng-messages="editUserForm.password.$dirty && editUserForm.password.$error" role="alert" class="text-danger">
+            <div ng-messages-include="errors.html"></div>
+          </div>
+        </md-input-container>
+      </div>
+    </form>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button ui-sref="dashboard.users.list">Cancel</md-button>
+    <md-button class="md-raised md-primary" ng-disabled="editUserForm.$invalid">Save</md-button>
+  </md-card-actions>
+</md-card>

@@ -1,17 +1,38 @@
-<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" ui-sref="dashboard.home">{{ appTitle }}</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" ui-sref="dashboard.users">Users</a>
-      </li>
-    </ul>
-    <div class="nav navbar-text pull-right">
-      Welcome <strong> {{ loggedUser.firstName }}</strong> <a href="" class="nav-link-logout" ng-click="logout()">(logout)</a>
-    </div>
+<div layout="row" layout-fill>
+  <md-sidenav class="dashboard-sidenav" md-component-id="left" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <a ui-sref="dashboard.home" ng-click="toggleLeftMenu()">{{ appTitle }}</a>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <ul class="menu-list" ng-click="toggleLeftMenu()">
+        <li class="menu-item">
+          <a class="menu-link" ui-sref="dashboard.users.list" ui-sref-active="active">Users</a>
+        </li>
+      </ul>
+    </md-content>
+  </md-sidenav>
+  <div layout="column" flex>
+    <md-toolbar class="dashboard-toolbar" ng-click="toggleLeftMenu()">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button md-dark hide-gt-md" aria-label="Menu">
+          <md-icon>menu</md-icon>
+        </md-button>
+        <span>{{ stateTitle }}</span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
+        <span class="logged-user">
+          Welcome <strong>{{ loggedUser.firstName }}</strong>
+          <md-button class="md-icon-button" aria-label="Logout" ng-click="logout()">
+            <md-icon>exit_to_app</md-icon>
+          </md-button>
+        </span>
+      </div>
+    </md-toolbar>
+    <md-content layout-padding>
+      <md-progress-linear class="smooth-progress" md-mode="indeterminate" ng-class="stateChanging ? 'show' : ''"></md-progress-linear>
+      <div class="dashboard-content" ui-view></div>
+    </md-content>
   </div>
-</nav>
-<div class="container dashboard-container">
-  <h1 class="display-1">{{ stateTitle }}</h1>
-  <div ui-view></div>
 </div>

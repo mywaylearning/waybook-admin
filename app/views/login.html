@@ -1,28 +1,39 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-md-offset-2">
-      <div class="card">
-        <div class="card-block">
-          <h4 class="card-title text-center">Login</h4>
-          <form name="loginForm" ng-submit="login.submit()" novalidate>
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" ng-model="login.credentials.email" class="form-control" id="email" name="email" required />
-              <div ng-messages="loginForm.email.$dirty && loginForm.email.$error" role="alert" class="text-danger">
-                <div ng-messages-include="errors.html"></div>
-              </div>
+<div layout="row" layout-fill layout-align="center center">
+  <div flex flex-gt-sm="50">
+    <form name="loginForm" ng-submit="login.submit(loginForm)" api-form="login.submitPromise" novalidate>
+      <md-card style="position: relative">
+        <md-progress-linear class="smooth-progress" md-mode="indeterminate" ng-class="login.submitted ? 'show' : ''"></md-progress-linear>
+        <md-card-content>
+          <div layout="row" layout-align="center">
+            <h2 class="md-title">Login</h2>
+          </div>
+          <div ng-if="loginForm.$api.$invalid">
+            <div ng-messages="loginForm.$api.$error" role="alert" class="api-error-message">
+              <ng-message="invalid_grant">E-mail, password or both are incorrect.</ng-message>
+              <div ng-messages-include="errors.html"></div>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" ng-model="login.credentials.password" class="form-control" id="password" name="password" required />
-              <div ng-messages="loginForm.password.$dirty && loginForm.password.$error" role="alert" class="text-danger">
-                <div ng-messages-include="errors.html"></div>
-              </div>
+          </div>
+          <md-input-container class="md-icon-float md-block">
+            <label>E-mail</label>
+            <md-icon>person</md-icon>
+            <input type="email" ng-model="login.credentials.email" name="email" required />
+            <div ng-messages="(loginForm.$submitted || loginForm.email.$dirty) && loginForm.email.$error" role="alert">
+              <div ng-messages-include="errors.html"></div>
             </div>
-            <button href="#" class="btn btn-lg btn-block btn-primary" ng-disabled="loginForm.$invalid">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>
+          </md-input-container>
+          <md-input-container class="md-icon-float md-block">
+            <label>Password</label>
+            <md-icon>lock</md-icon>
+            <input type="password" ng-model="login.credentials.password" name="password" required />
+            <div ng-messages="(loginForm.$submitted || loginForm.password.$dirty) && loginForm.password.$error" role="alert">
+              <div ng-messages-include="errors.html"></div>
+            </div>
+          </md-input-container>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-raised md-primary" type="submit" ng-disabled="loginForm.$invalid">Login</md-button>
+        </md-card-actions>
+      </md-card>
+    </form>
   </div>
 </div>

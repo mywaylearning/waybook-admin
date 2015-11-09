@@ -12,7 +12,9 @@ import watchify     from 'watchify';
 import browserify   from 'browserify';
 import uglify       from 'gulp-uglify';
 import handleErrors from '../util/handleErrors';
-import browserSync  from 'browser-sync';
+import bs           from 'browser-sync';
+
+const bsServer = bs.get(config.browserSync.appName);
 
 // Based on: http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
 function buildScript(file) {
@@ -64,7 +66,7 @@ function buildScript(file) {
       }))))
       .pipe(gulpif(createSourcemap, sourcemaps.write('./')))
       .pipe(gulp.dest(config.scripts.dest))
-      .pipe(browserSync.stream({ once: true }));
+      .pipe(bsServer.stream());
   }
 
   return rebundle();

@@ -3,13 +3,15 @@
 import config      from '../config';
 import changed     from 'gulp-changed';
 import gulp        from 'gulp';
-import browserSync from 'browser-sync';
+import bs          from 'browser-sync';
+
+const bsServer = bs.get(config.browserSync.appName);
 
 gulp.task('data', function() {
 
   return gulp.src(config.data.src)
     .pipe(changed(config.data.dest)) // Ignore unchanged files
     .pipe(gulp.dest(config.data.dest))
-    .pipe(browserSync.stream({ once: true }));
+    .pipe(bsServer.stream());
 
 });

@@ -5,9 +5,12 @@ import gulp         from 'gulp';
 import gulpif       from 'gulp-if';
 import sourcemaps   from 'gulp-sourcemaps';
 import sass         from 'gulp-sass';
+import cssImport    from 'gulp-cssimport';
 import handleErrors from '../util/handleErrors';
-import browserSync  from 'browser-sync';
+import bs           from 'browser-sync';
 import autoprefixer from 'gulp-autoprefixer';
+
+const bsServer = bs.get(config.browserSync.appName);
 
 gulp.task('styles', function () {
 
@@ -20,6 +23,7 @@ gulp.task('styles', function () {
       outputStyle: global.isProd ? 'compressed' : 'nested',
       includePaths: config.styles.sassIncludePaths
     }))
+    .pipe(cssImport())
     .on('error', handleErrors)
     .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
     .pipe(gulpif(
@@ -27,6 +31,6 @@ gulp.task('styles', function () {
       sourcemaps.write( global.isProd ? './' : null ))
     )
     .pipe(gulp.dest(config.styles.dest))
-    .pipe(browserSync.stream({ once: true }));
+    .pipe(bsServer.stream());
 
 });

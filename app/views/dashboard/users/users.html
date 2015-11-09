@@ -1,0 +1,53 @@
+<md-card>
+  <md-data-table-toolbar ng-hide="tableControl.selected.length || filter.show">
+    <h2 class="md-title">List of users</h2>
+    <div flex></div>
+    <md-button class="md-icon-button" ng-click="filter.show = true" aria-label="Search">
+      <md-icon>search</md-icon>
+    </md-button>
+  </md-data-table-toolbar>
+
+  <md-data-table-toolbar ng-show="filter.show && !tableControl.selected.length">
+    <md-icon>search</md-icon>
+    <form flex name="filter.form">
+      <input type="text" ng-model="query.search" ng-model-options="filter.options" placeholder="search" md-autofocus>
+    </form>
+    <md-button class="md-icon-button" ng-click="removeFilter()" aria-label="Close">
+      <md-icon>close</md-icon>
+    </md-button>
+  </md-data-table-toolbar>
+
+  <md-data-table-toolbar class="alternate" ng-show="tableControl.selected.length" layout-align="space-between">
+    <div>{{tableControl.selected.length}} {{tableControl.selected.length > 1 ? 'items' : 'item'}} selected</div>
+    <md-button class="md-icon-button" ng-click="delete($event)" aria-label="Delete">
+      <md-icon>mode_delete</md-icon>
+    </md-button>
+  </md-data-table-toolbar>
+
+  <md-data-table-container>
+    <table md-data-table md-row-select="tableControl.selected" md-progress="deferred" flex>
+      <thead md-order="tableControl.order">
+        <tr>
+          <th name="Name" order-by="firstName"></th>
+          <th name="E-mail" order-by="email"></th>
+          <th name="Registered at" order-by="created"></th>
+          <th name="Last seen" order-by="lastSeen"></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr md-auto-select ng-repeat="user in collection | orderBy: tableControl.order">
+          <td>{{user.firstName}} {{user.lastName}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.created | date: 'short'}}</td>
+          <td>{{user.lastSeen | date: 'short'}}</td>
+          <td>
+            <md-button class="md-icon-button" ng-click="editUser($event, user)" aria-label="Edit user">
+              <md-icon>edit</md-icon>
+            </md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-data-table-container>
+</md-card>

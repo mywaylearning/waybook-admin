@@ -1,6 +1,10 @@
-function DashboardCtrl($scope, AppService, UserService) {
+function DashboardCtrl($scope, $mdSidenav, AppService, UserService) {
   'ngInject';
   AppService.setLoggedUser();
+
+  $scope.toggleLeftMenu = function() {
+    $mdSidenav('left').toggle();
+  };
 
   $scope.logout = function() {
     AppService.reset();
