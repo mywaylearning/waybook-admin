@@ -89,7 +89,7 @@
   },
   "scripts": {
     "build": "gulp prod",
-    "deploy": "aws s3 sync www/ s3://admin.way.me --delete --acl public-read --region us-west-2",
+    "deploy": "aws s3 sync build/ s3://admin.way.me --delete --acl public-read --region us-west-2",
     "preprotractor": "npm install && webdriver-manager update",
     "prepare-test": "npm install && gulp views",
     "pretest": "npm run prepare-test",
