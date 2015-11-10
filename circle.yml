@@ -16,6 +16,7 @@ dependencies:
 
 test:
   post:
+    - cp coverage/* $CIRCLE_ARTIFACTS/
     - npm run build
 
 deployment:
