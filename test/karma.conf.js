@@ -8,7 +8,7 @@ module.exports = function(config) {
   config.set({
 
     basePath: '../',
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['jasmine', 'source-map-support', 'browserify'],
     preprocessors: {
       'app/js/**/*.js': ['browserify', 'coverage']
     },
@@ -19,7 +19,7 @@ module.exports = function(config) {
 
     browserify: {
       debug: true,
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js'],
       transform: [
         'babelify',
         'bulkify',

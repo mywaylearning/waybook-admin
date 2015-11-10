@@ -73,6 +73,7 @@
     "karma-coverage": "douglasduteil/karma-coverage#next",
     "karma-firefox-launcher": "^0.1.3",
     "karma-jasmine": "^0.3.6",
+    "karma-source-map-support": "^1.1.0",
     "localenvify": "^1.0.1",
     "lodash": "^3.10.1",
     "pretty-hrtime": "^0.2.2",
@@ -87,11 +88,15 @@
     "watchify": "^3.4.0"
   },
   "scripts": {
-    "start": "gulp dev",
     "build": "gulp prod",
-    "pretest": "npm install",
-    "test": "karma start test/karma.conf.js",
+    "deploy": "aws s3 sync www/ s3://admin.way.me --delete --acl public-read --region us-west-2",
     "preprotractor": "npm install && webdriver-manager update",
-    "protractor": "protractor test/protractor.conf.js"
+    "prepare-test": "npm install && gulp views",
+    "pretest": "npm run prepare-test",
+    "pretest-watch": "npm run prepare-test",
+    "protractor": "protractor test/protractor.conf.js",
+    "start": "gulp dev",
+    "test": "karma start test/karma.conf.js --single-run",
+    "test-watch": "karma start test/karma.conf.js"
   }
 }

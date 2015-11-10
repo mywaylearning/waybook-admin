@@ -48,4 +48,4 @@ angular.module('app').config(routes);
 
 angular.module('app').run(run);
 
-angular.bootstrap(document, ['app'], { strictDi: true });
+angular.bootstrap(document, ['app']);

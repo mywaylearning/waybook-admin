@@ -3,7 +3,7 @@ function HomeCtrl() {
   // ViewModel
   const vm = this;
 
-  vm.stats = Math.random().toFixed(2);
+  vm.stats = 10;
 }
 
 export default {
