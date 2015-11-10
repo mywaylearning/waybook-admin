@@ -1,11 +1,11 @@
 {
-  "name": "angularjs-gulp-browserify-boilerplate",
+  "name": "waybook-admin",
   "version": "1.0.0",
-  "author": "Jake Marsh <jakemmarsh@gmail.com>",
-  "description": "Boilerplate using AngularJS, SASS, Gulp, and Browserify while also utilizing best practices.",
+  "author": "Igor Prado <igorprado@gmail.com>",
+  "description": "Waybook admin dashboard.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate.git"
+    "url": "https://github.com/mywaylearning/waybook-admin.git"
   },
   "keywords": [
     "express",
