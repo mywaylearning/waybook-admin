@@ -11,12 +11,11 @@ dependencies:
     - if [[ ! -e libsass ]]; then git clone --recursive git@github.com:sass/libsass.git && cd sassc && export SASS_LIBSASS_PATH=$(readlink -f ../libsass) && make && cd ..; fi
     - ln -s sassc/bin/sassc ~/bin/sassc
   pre:
-    - sudo apt-get update
     - sudo pip install awscli
 
 test:
   post:
-    - cp coverage/* $CIRCLE_ARTIFACTS/
+    - cp -r coverage/* $CIRCLE_ARTIFACTS/
     - npm run build
 
 deployment:
