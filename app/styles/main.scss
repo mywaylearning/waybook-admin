@@ -4,8 +4,8 @@
 @import 'vars';
 @import 'typography';
 
-.login {
-  background-color: #ececec;
+.gray-background {
+  background-color: #f9f9f9;
 }
 
 .logged-user {
@@ -28,7 +28,10 @@
 
 .dashboard-content {
   margin: 16px;
-  box-sizing: border-box;
+}
+
+md-content {
+  background-color: transparent;
 }
 
 .api-error-message {
