@@ -89,7 +89,12 @@
   },
   "scripts": {
     "build": "gulp prod",
-    "deploy": "aws s3 sync build/ s3://admin.way.me --delete --acl public-read --region us-west-2",
+    "deploy:gzip:css": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --no-guess-mime-type true --add-header \"Content-Encoding:gzip\" --mime-type=\"text/css; charset=utf-8\" --add-header \"Cache-Control: max-age 86400\" --exclude \"*\" --include \"*.css.gz\"",
+    "deploy:gzip:html": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --no-guess-mime-type true --add-header \"Content-Encoding:gzip\" --mime-type=\"text/html; charset=utf-8\" --add-header \"Cache-Control: max-age 86400\" --exclude \"*\" --include \"*.html.gz\"",
+    "deploy:gzip:js": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --no-guess-mime-type true --add-header \"Content-Encoding:gzip\" --mime-type=\"application/javascript; charset=utf-8\" --add-header \"Cache-Control: max-age 86400\" --exclude \"*\" --include \"*.js.gz\"",
+    "deploy:all": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --exclude '.gz*'",
+    "deploy:delete": "aws s3 sync build/ s3://admin.way.me --delete",
+    "deploy": "npm run deploy:delete && npm run deploy:all && npm run deploy:gzip:css && npm run deploy:gzip:js && npm run deploy:gzip:html",
     "preprotractor": "npm install && webdriver-manager update",
     "prepare-test": "gulp views",
     "pretest": "npm run prepare-test",
