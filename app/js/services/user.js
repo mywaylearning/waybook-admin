@@ -1,6 +1,6 @@
 function UserService($window, $state, ApiService, AuthService) {
   'ngInject';
-  const Users = ApiService.all('users');
+  const Users = ApiService.all('admin/users');
   const User = ApiService.one('user');
   const service = {};
 
