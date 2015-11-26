@@ -100,12 +100,12 @@
     "deploy:delete": "aws s3 sync build/ s3://admin.way.me --delete --region us-west-2",
     "deploy": "npm run deploy:all && npm run deploy:gzip:css && npm run deploy:gzip:js && npm run deploy:gzip:html && npm run deploy:delete",
     "preprotractor": "npm install && webdriver-manager update",
-    "prepare-test": "gulp views",
+    "prepare-test": "gulp views && npm run build:lodash",
     "pretest": "npm run prepare-test",
     "pretest-watch": "npm run prepare-test",
     "protractor": "protractor test/protractor.conf.js",
     "start": "npm run build:lodash && gulp dev",
-    "test": "npm run build:lodash && gulp views && karma start test/karma.conf.js --single-run",
+    "test": "karma start test/karma.conf.js --single-run",
     "test-watch": "karma start test/karma.conf.js"
   },
   "dependencies": {
