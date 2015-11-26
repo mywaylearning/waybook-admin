@@ -105,7 +105,7 @@
     "pretest-watch": "npm run prepare-test",
     "protractor": "protractor test/protractor.conf.js",
     "start": "npm run build:lodash && gulp dev",
-    "test": "karma start test/karma.conf.js --single-run",
+    "test": "npm run build:lodash && gulp views && karma start test/karma.conf.js --single-run",
     "test-watch": "karma start test/karma.conf.js"
   },
   "dependencies": {
