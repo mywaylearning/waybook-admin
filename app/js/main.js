@@ -8,13 +8,14 @@ import 'angular-messages';
 import 'restangular';
 import 'angular-material-data-table';
 import 'angular-material';
-import './templates';
+import 'angular-sortable-view';
+import './custom-build/templates';
 import './filters';
 import './controllers';
 import './services';
 import './directives';
 
-window._ = require('lodash');
+window._ = require('./custom-build/lodash.custom.min');
 
 // Import angular config and run
 import constants from './constants';
@@ -30,6 +31,7 @@ const requires = [
   'restangular',
   'md.data.table',
   'ngMaterial',
+  'angular-sortable-view',
   'templates',
   'app.filters',
   'app.controllers',

@@ -24,8 +24,8 @@ node_modules
 bower_components
 
 # Build files
-build
-templates.js
+build/
+app/js/custom-build/
 
 #webstorm
 .idea

@@ -67,6 +67,24 @@ function OnConfig($stateProvider, $urlRouterProvider, AppSettings) {
         return UserService.userById($stateParams.id);
       }
     }
+  })
+
+  .state('dashboard.tasks', {
+    url: '/tasks',
+    abstract: true,
+    template: '<span ui-view></span>'
+  })
+
+  .state('dashboard.tasks.list', {
+    url: '',
+    templateUrl: 'dashboard/tasks/tasks.html',
+    controller: 'TasksCtrl as tasks',
+    title: 'Guide me Tasks',
+    resolve: {
+      collection: function(TaskService) {
+        return TaskService.collection();
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/');

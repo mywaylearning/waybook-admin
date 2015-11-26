@@ -22,6 +22,9 @@
   "engines": {
     "node": ">=0.12.x"
   },
+  "browser": {
+    "angular-sortable-view": "./node_modules/angular-sortable-view/src/angular-sortable-view.js"
+  },
   "devDependencies": {
     "angular": "^1.4.7",
     "angular-animate": "^1.4.7",
@@ -75,7 +78,7 @@
     "karma-jasmine": "^0.3.6",
     "karma-source-map-support": "^1.1.0",
     "localenvify": "^1.0.1",
-    "lodash": "^3.10.1",
+    "lodash-cli": "^3.10.1",
     "pretty-hrtime": "^0.2.2",
     "protractor": "^2.5.1",
     "restangular": "^1.5.1",
@@ -88,11 +91,12 @@
     "watchify": "^3.4.0"
   },
   "scripts": {
-    "build": "gulp prod",
+    "build:lodash": "grep -o -C 0 '_\\.[^(]*' node_modules/restangular/dist/restangular.js | sort -u | sed -e 's/_\\.//' | paste -d, -s - | xargs -I\"{}\" -t lodash -s -o app/js/custom-build/lodash.custom.min.js -p include={}",
+    "build": "npm run build:lodash && gulp prod",
     "deploy:gzip:css": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --content-encoding 'gzip'  --cache-control 'max-age 86400' --exclude '*' --include '*.css.gz'",
     "deploy:gzip:html": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --content-encoding 'gzip' --cache-control 'max-age 86400' --exclude '*' --include '*.html.gz'",
     "deploy:gzip:js": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --content-encoding 'gzip' --cache-control 'max-age 86400' --exclude '*' --include '*.js.gz'",
-    "deploy:all": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --exclude '.gz*'",
+    "deploy:all": "aws s3 sync build/ s3://admin.way.me --acl public-read --region us-west-2 --exclude '*.gz'",
     "deploy:delete": "aws s3 sync build/ s3://admin.way.me --delete --region us-west-2",
     "deploy": "npm run deploy:all && npm run deploy:gzip:css && npm run deploy:gzip:js && npm run deploy:gzip:html && npm run deploy:delete",
     "preprotractor": "npm install && webdriver-manager update",
@@ -100,8 +104,11 @@
     "pretest": "npm run prepare-test",
     "pretest-watch": "npm run prepare-test",
     "protractor": "protractor test/protractor.conf.js",
-    "start": "gulp dev",
+    "start": "npm run build:lodash && gulp dev",
     "test": "karma start test/karma.conf.js --single-run",
     "test-watch": "karma start test/karma.conf.js"
+  },
+  "dependencies": {
+    "angular-sortable-view": "0.0.13"
   }
 }

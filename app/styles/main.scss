@@ -1,4 +1,4 @@
-@import 'angular-material/angular-material';
+@import 'angular-material/angular-material.scss';
 @import 'angular-material-data-table/dist/md-data-table';
 
 @import 'vars';
@@ -94,4 +94,9 @@ md-data-table-toolbar.alternate {
   &:hover, &.active {
     background-color: darken($sidebar-bg, 20%);
   }
+}
+
+.disabled {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
