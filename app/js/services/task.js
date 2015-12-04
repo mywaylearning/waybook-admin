@@ -1,16 +1,20 @@
 function TaskService(ApiService) {
   'ngInject';
-  const Users = ApiService.all('admin/tasks');
+  const Tasks = ApiService.all('admin/tasks');
   const service = {};
 
   // Return collection of users
   service.collection = function(query) {
-    return Users.getList(query);
+    return Tasks.getList(query);
   };
 
-  // Return a specific user by id
-  service.userById = function(id) {
-    return ApiService.one('users', id).get();
+  // Return a specific task by id
+  service.getById = function(id) {
+    return ApiService.one('admin/tasks', id).get();
+  };
+
+  service.create = function(task) {
+    return Tasks.post(task);
   };
 
   return service;

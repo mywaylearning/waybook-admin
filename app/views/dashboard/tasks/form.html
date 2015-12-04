@@ -1,0 +1,48 @@
+<form name="taskForm" ng-submit="ctrl.save(taskForm)" novalidate>
+  <md-card>
+    <md-card-content>
+        <div layout="row" layout-sm="column">
+          <md-input-container flex>
+            <label>Title</label>
+            <input type="text" ng-model="ctrl.task.title" name="title" required />
+            <div ng-messages="taskForm.title.$dirty && taskForm.title.$error" role="alert">
+              <div ng-messages-include="errors.html"></div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout="row" layout-sm="column">
+          <md-input-container flex>
+            <label>Section</label>
+            <md-select ng-model="ctrl.task.section" required>
+              <md-option ng-value="'explore'">Exploration</md-option>
+              <md-option ng-value="'goal'">Goal</md-option>
+              <md-option ng-value="'unite'">Unite</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-sm="column" ng-if="ctrl.task.section === 'explore'">
+          <md-input-container flex>
+            <label>Exploration</label>
+            <md-select ng-model="ctrl.task.explorationId">
+              <md-option ng-value="exploration.id" ng-repeat="exploration in ctrl.explorations">{{ exploration.name }}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <div layout="row" layout-sm="column" ng-if="ctrl.task.section && ctrl.task.section !== 'explore'">
+          <md-chips flex
+          ng-model="ctrl.task.tags"
+          placeholder="Enter tags"
+          delete-button-label="Remove Tag"
+          delete-hint="Press delete to remove tag"
+          secondary-placeholder="Enter tags"></md-chips>
+        </div>
+
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ui-sref="dashboard.tasks.list">Cancel</md-button>
+      <md-button class="md-raised md-primary" ng-disabled="taskForm.$invalid">Save</md-button>
+    </md-card-actions>
+  </md-card>
+</form>

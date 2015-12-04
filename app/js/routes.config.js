@@ -85,6 +85,36 @@ function OnConfig($stateProvider, $urlRouterProvider, AppSettings) {
         return TaskService.collection();
       }
     }
+  })
+
+  .state('dashboard.tasks.add', {
+    url: '/add',
+    templateUrl: 'dashboard/tasks/form.html',
+    controller: 'TaskFormCtrl as ctrl',
+    title: 'Add a Task',
+    resolve: {
+      task: function() {
+        return false;
+      },
+      explorations: function(ExplorationService) {
+        return ExplorationService.collection();
+      }
+    }
+  })
+
+  .state('dashboard.tasks.edit', {
+    url: '/edit/{id}',
+    templateUrl: 'dashboard/tasks/form.html',
+    controller: 'TaskFormCtrl as ctrl',
+    title: 'Edit a Task',
+    resolve: {
+      task: function(TaskService, $stateParams) {
+        return TaskService.getById($stateParams.id);
+      },
+      explorations: function(ExplorationService) {
+        return ExplorationService.collection();
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/');

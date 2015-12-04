@@ -1,4 +1,4 @@
-function TasksCtrl($scope, collection) {
+function TasksCtrl($scope, $state, collection) {
   'ngInject';
 
   // Sort collection before ng-repeat (since it's using a sort directive, we can't use orderBy)
@@ -41,6 +41,11 @@ function TasksCtrl($scope, collection) {
       return false;
     }
     return true;
+  };
+
+  $scope.editTask = function(task, $event) {
+    $event.stopPropagation();
+    $state.go('dashboard.tasks.edit', { id: task.id });
   };
 }
 
