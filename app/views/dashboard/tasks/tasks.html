@@ -6,14 +6,20 @@
 <md-card>
   <form name="tasksList">
     <md-list sv-root sv-part="collection" sv-on-sort="onOrderChange()">
+      <md-list-item>
+        Enabled &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Title
+      </md-list-item>
       <md-list-item ng-repeat="task in collection" sv-element ng-class="{'disabled': task.disabled}">
         <md-checkbox ng-model="task.disabled" ng-true-value="false" ng-false-value="true"></md-checkbox>
+        <md-button class="md-icon-button" aria-label="Re-order" sv-handle>
+          <md-icon class="md-secondary">reorder</md-icon>
+        </md-button>
         <p>{{task.title}}</p>
         <md-button class="md-icon-button" aria-label="Edit" ui-sref="dashboard.tasks.edit({id: task.id})">
           <md-icon class="md-secondary">edit</md-icon>
         </md-button>
-        <md-button class="md-icon-button" aria-label="Re-order" sv-handle>
-          <md-icon class="md-secondary">reorder</md-icon>
+        <md-button class="md-icon-button" aria-label="Edit" ui-sref="dashboard.tasks.edit({id: task.id})">
+          <md-icon class="md-secondary">delete</md-icon>
         </md-button>
       </md-list-item>
     </md-list>
