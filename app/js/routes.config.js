@@ -105,7 +105,7 @@ function OnConfig($stateProvider, $urlRouterProvider, AppSettings) {
   .state('dashboard.tasks.edit', {
     url: '/edit/{id}',
     templateUrl: 'dashboard/tasks/form.html',
-    controller: 'TasksFormCtrl as ctrl',
+    controller: 'TaskFormCtrl as ctrl',
     title: 'Edit a Task',
     resolve: {
       task: function(TaskService, $stateParams) {

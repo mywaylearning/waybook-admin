@@ -15,11 +15,8 @@
           <md-icon class="md-secondary">reorder</md-icon>
         </md-button>
         <p>{{task.title}}</p>
-        <md-button class="md-icon-button" aria-label="Edit" ui-sref="dashboard.tasks.edit({id: task.id})">
+        <md-button class="md-icon-button" aria-label="Edit" ng-click="editTask(task, $event)">
           <md-icon class="md-secondary">edit</md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="Edit" ui-sref="dashboard.tasks.edit({id: task.id})">
-          <md-icon class="md-secondary">delete</md-icon>
         </md-button>
       </md-list-item>
     </md-list>

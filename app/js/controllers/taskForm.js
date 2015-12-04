@@ -12,6 +12,10 @@ function TaskFormCtrl($state, task, explorations, TaskService) {
   if (task) {
     vm.edit = true;
     vm.task = task;
+
+    if (!vm.task.tags || !angular.isArray(vm.task.tags)) {
+      vm.task.tags = [];
+    }
   }
 
   vm.save = function(form) {
