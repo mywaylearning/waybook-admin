@@ -21,7 +21,9 @@ function TaskFormCtrl($state, task, explorations, TaskService) {
     }
 
     if (vm.edit) {
-      vm.task.save();
+      vm.task.save().then(function() {
+        $state.go('dashboard.tasks.list');
+      });
     } else {
       TaskService.create(vm.task).then(function() {
         $state.go('dashboard.tasks.list');
