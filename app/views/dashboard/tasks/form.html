@@ -30,7 +30,7 @@
           </md-input-container>
         </div>
 
-        <div layout="row" layout-sm="column">
+        <div layout="row" layout-sm="column" ng-if="ctrl.task.section && ctrl.task.section !== 'explore'">
           <md-chips flex
           ng-model="ctrl.task.tags"
           placeholder="Enter tags"
