@@ -15,7 +15,6 @@ function TaskFormCtrl($state, task, explorations, TaskService) {
   }
 
   vm.save = function(form) {
-    console.log(form);
     if (form.$invalid) {
       return;
     }
