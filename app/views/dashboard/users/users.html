@@ -28,11 +28,14 @@
     <table md-data-table md-progress="deferred" flex>
       <thead md-order="tableControl.order">
         <tr>
-          <th name="Name" order-by="firstName"></th>
-          <th name="E-mail" order-by="email"></th>
-          <th name="Registered at" order-by="created"></th>
-          <th name="Last seen" order-by="lastSeen"></th>
-          <th></th>
+          <th name="Name" order-by="firstName" width="25%"></th>
+          <th name="E-mail" order-by="email" width="25%"></th>
+          <th name="Registered at" order-by="created" width="15%"></th>
+          <th name="Last seen" order-by="lastSeen" width="15%"></th>
+          <th name="Discoveries" order-by="discoveries" width="5%"></th>
+          <th name="Goals" order-by="goals" width="5%"></th>
+          <th name="Supporters" order-by="supporters" width="5%"></th>
+          <th width="5%"></th>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +44,9 @@
           <td>{{user.email}}</td>
           <td>{{user.created | date: 'short'}}</td>
           <td>{{user.lastSeen | date: 'short'}}</td>
+          <td>{{user.discoveries}}</td>
+          <td>{{user.goals}}</td>
+          <td>{{user.supporters}}</td>
           <td>
             <md-button class="md-icon-button" ng-click="editUser($event, user)" aria-label="Edit user">
               <md-icon>edit</md-icon>
